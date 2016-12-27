@@ -1,0 +1,17 @@
+group 'tk.leoforney.phoneimager'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.kohsuke:github-api:1.82'
+    compile 'com.github.axet:vget:1.2.4'
+
+}
