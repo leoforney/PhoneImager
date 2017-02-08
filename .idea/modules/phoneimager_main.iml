@@ -17,6 +17,6 @@
     <orderEntry type="library" name="Gradle: org.kohsuke:github-api:1.82" level="project" />
     <orderEntry type="library" name="Gradle: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.2.3" level="project" />
-    <orderEntry type="library" name="com.github.axet:vget:1.2.4" level="project" />
+    <orderEntry type="library" name="org.apache.httpcomponents:httpclient:4.5.3" level="project" />
   </component>
 </module>

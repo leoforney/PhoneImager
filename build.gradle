@@ -12,6 +12,6 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.kohsuke:github-api:1.82'
-    compile 'com.github.axet:vget:1.2.4'
-
+    compile 'com.github.axet:wget:1.4.3'
+    compile 'commons-io:commions-io:2.4'
 }
