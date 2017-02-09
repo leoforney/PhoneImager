@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/phoneimager.iml" filepath="$PROJECT_DIR$/.idea/modules/phoneimager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/phoneimager_main.iml" filepath="$PROJECT_DIR$/.idea/modules/phoneimager_main.iml" group="phoneimager" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/phoneimager_test.iml" filepath="$PROJECT_DIR$/.idea/modules/phoneimager_test.iml" group="phoneimager" />
+      <module fileurl="file://$PROJECT_DIR$/phoneimager.iml" filepath="$PROJECT_DIR$/phoneimager.iml" />
     </modules>
   </component>
 </project>
