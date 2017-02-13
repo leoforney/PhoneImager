@@ -1,0 +1,3 @@
+[submodule "jadb"]
+	path = jadb
+	url = https://github.com/vidstige/jadb

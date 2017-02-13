@@ -7,10 +7,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.kohsuke.github.*;
+import se.vidstige.jadb.JadbConnection;
+import se.vidstige.jadb.JadbDevice;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +25,18 @@ import java.util.Scanner;
 public class Main {
     private static String API_KEY = "8534df699907e4e673e9ff932af2acdfb4c33056";
     private static File homeDirectory = new File(System.getProperty("user.home") + "/PhoneImager/");
+    private static JadbConnection jadb;
+
+    private static JadbDevice ds;
+    private static JadbDevice rc;
 
     private static int stage = 0;
 
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
+
+        jadb = new JadbConnection();
 
         stage = 0;
 
@@ -87,11 +96,13 @@ public class Main {
                 if (args.length >= 1 && args[0].equals("generate")) {
                     stage = -100;
                 } else {
-                    for (File file : homeDirectory.listFiles()) {
-                        if (file.getName().equals("schema.json")) stage++;
+                    File schema = new File(homeDirectory + File.separator + "schema.json");
+                    if (schema.exists() && !FileUtils.readFileToString(schema).equals("")) {
+                        stage++;
+                    } else {
+                        System.out.println("This repository doesn't implement the schema.json mapping format... Please ask the developer to fix this");
+                        System.exit(101);
                     }
-                    System.out.println("This repository doesn't implement the schema.json mapping format... Please ask the developer to fix this");
-                    System.exit(101);
                 }
 
             }
@@ -125,8 +136,6 @@ public class Main {
                         prop.destination = "rc";
                     }
 
-
-
                     propList.add(prop);
                 }
                 String propListJson = new Gson().toJson(propList);
@@ -136,7 +145,20 @@ public class Main {
                 System.exit(0);
             }
             if (stage == 4) {
+                System.out.println("Please plug in Driver Station");
+                try {
+                    List<JadbDevice> devices = jadb.getDevices();
+                    if (devices.size() == 1) {
+                        ds = devices.get(0);
+                        System.out.println(ds.getState().toString());
+                        stage++;
+                    }
+                } catch (ConnectException e) {
 
+                }
+
+            }
+            if (stage == 5) {
             }
             Thread.sleep(250);
         }
